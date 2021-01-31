@@ -1,5 +1,29 @@
 # Codepipeline Infrastructure for CI/CD
 
-This configuration uses Terraform to create resources on AWS and automate the pipeline from github
+This configuration uses Terraform to create resources on AWS and automate the pipeline from github.
 
-[Link to the example app](https://github.com/Wyfy0107/Codepipeline-Demo-App)
+## Prerequisites
+
+These should be completed:
+
+- Create a github Oauth token to allow AWS to get your source code
+- Install [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- Create your IAM credentials in AWS console. It should have the following policies:
+  - S3 full access
+  - EC2 full access
+  - IAM full access
+  - CodeDeploy full access
+  - CodeBuild admin access
+  - CodePipeline full access
+
+## Instructions
+
+1. Clone/Fork this repository
+2. Run `terraform init`
+3. Create `terraform.auto.tfvars` file and declare all required variables
+4. Run `terraform plan`
+5. If the above output is ok, then run `terraform apply`
+
+The **app** folder is a reference for the code to be deployed.
+
+After all resources are created, the pipeline should take your source code from github and start the process. You can observe the pipeline inside AWS CodePipeline console.
