@@ -1,6 +1,5 @@
-app
-ec2.key
-ec2.key.pub
+/scripts/instance.key
+/modules/asg/instance.key.pub
 # Local .terraform directories
 **/.terraform/*
 

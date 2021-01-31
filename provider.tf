@@ -12,3 +12,22 @@ provider "aws" {
   secret_key = var.aws_secret_key
   region     = var.aws_region
 }
+
+module "vpc" {
+  source = "./modules/vpc"
+
+  project     = var.project
+  environment = var.environment
+
+  vpc_cidr            = var.vpc_cidr
+  public_subnets_cidr = var.public_subnets_cidr
+}
+
+module "asg" {
+  source = "./modules/asg"
+
+  project        = var.project
+  environment    = var.environment
+  vpc_id         = module.vpc.vpc_id
+  vpc_subnets_id = module.vpc.vpc_subnets_id
+}

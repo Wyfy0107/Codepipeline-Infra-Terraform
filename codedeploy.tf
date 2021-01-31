@@ -32,10 +32,7 @@ resource "aws_codedeploy_deployment_group" "demo" {
   app_name              = aws_codedeploy_app.demo.name
   deployment_group_name = "demo"
   service_role_arn      = aws_iam_role.codedeploy.arn
-
-  ec2_tag_filter {
-    type  = "KEY_AND_VALUE"
-    key   = "Name"
-    value = "demo"
-  }
+  autoscaling_groups = [
+    module.asg.autoscaling_group_name
+  ]
 }
