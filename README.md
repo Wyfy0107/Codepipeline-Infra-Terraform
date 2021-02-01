@@ -1,4 +1,4 @@
-# Codepipeline Infrastructure for CI/CD
+# AWS Infrastructure for CI/CD
 
 This configuration uses Terraform to create resources on AWS and automate a CI/CD pipeline with source code coming from Github. The code will go through AWS Codepipeline and deployed onto an Autoscaling group of EC2. This can scale your instances automatically based on cpu usage
 
